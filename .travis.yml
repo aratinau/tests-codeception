@@ -25,7 +25,7 @@ before_install:
   - composer self-update
 
 install:
-  - composer update
+  - COMPOSER_MEMORY_LIMIT=-1 composer update
   - ./bin/console server:start
   - ./vendor/bin/codecept build
 
