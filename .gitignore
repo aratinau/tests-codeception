@@ -1,4 +1,3 @@
-.idea
 /build/
 /node_modules/
 /var/*
@@ -17,25 +16,29 @@
 /public/build/images/glyphicons-*
 
 ###> symfony/framework-bundle ###
-.env
+/.env.local
+/.env.*.local
 /public/bundles/
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
+.phpunit
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
 ###> symfony/web-server-bundle ###
-.web-server-pid
+/.web-server-pid
 ###< symfony/web-server-bundle ###
 
 ###> friendsofphp/php-cs-fixer ###
-.php_cs
-.php_cs.cache
+/.php_cs
+/.php_cs.cache
 ###< friendsofphp/php-cs-fixer ###
 
-###> phpunit/phpunit ###
-/phpunit.xml
-###< phpunit/phpunit ###
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###

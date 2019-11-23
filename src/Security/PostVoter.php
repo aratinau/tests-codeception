@@ -28,9 +28,9 @@ class PostVoter extends Voter
 {
     // Defining these constants is overkill for this simple application, but for real
     // applications, it's a recommended practice to avoid relying on "magic strings"
-    const SHOW = 'show';
-    const EDIT = 'edit';
-    const DELETE = 'delete';
+    public const DELETE = 'delete';
+    public const EDIT = 'edit';
+    public const SHOW = 'show';
 
     /**
      * {@inheritdoc}
@@ -38,7 +38,7 @@ class PostVoter extends Voter
     protected function supports($attribute, $subject): bool
     {
         // this voter is only executed for three specific permissions on Post objects
-        return $subject instanceof Post && in_array($attribute, [self::SHOW, self::EDIT, self::DELETE], true);
+        return $subject instanceof Post && \in_array($attribute, [self::SHOW, self::EDIT, self::DELETE], true);
     }
 
     /**
