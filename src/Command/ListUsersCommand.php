@@ -55,7 +55,7 @@ class ListUsersCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setDescription('Lists all the existing users')
@@ -127,11 +127,8 @@ HELP
 
     /**
      * Sends the given $contents to the $recipient email address.
-     *
-     * @param string $contents
-     * @param string $recipient
      */
-    private function sendReport($contents, $recipient)
+    private function sendReport(string $contents, string $recipient): void
     {
         // See https://symfony.com/doc/current/cookbook/email/email.html
         $message = $this->mailer->createMessage()

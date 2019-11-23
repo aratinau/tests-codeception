@@ -21,10 +21,7 @@ use Twig\TwigFunction;
  * This Twig extension adds a new 'md2html' filter to easily transform Markdown
  * contents into HTML contents inside Twig templates.
  *
- * See https://symfony.com/doc/current/cookbook/templating/twig_extension.html
- *
- * In addition to creating the Twig extension class, before using it you must also
- * register it as a service. See app/config/services.yml file for details.
+ * See https://symfony.com/doc/current/templating/twig_extension.html
  *
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
@@ -36,7 +33,7 @@ class AppExtension extends AbstractExtension
     private $localeCodes;
     private $locales;
 
-    public function __construct(Markdown $parser, $locales)
+    public function __construct(Markdown $parser, string $locales)
     {
         $this->parser = $parser;
         $this->localeCodes = explode('|', $locales);

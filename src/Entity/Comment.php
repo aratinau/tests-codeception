@@ -64,7 +64,6 @@ class Comment
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
-     * @Assert\DateTime
      */
     private $publishedAt;
 
@@ -91,7 +90,7 @@ class Comment
         return !$containsInvalidCharacters;
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -116,7 +115,7 @@ class Comment
         $this->publishedAt = $publishedAt;
     }
 
-    public function getAuthor(): User
+    public function getAuthor(): ?User
     {
         return $this->author;
     }
@@ -126,7 +125,7 @@ class Comment
         $this->author = $author;
     }
 
-    public function getPost(): Post
+    public function getPost(): ?Post
     {
         return $this->post;
     }
