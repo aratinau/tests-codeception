@@ -3,22 +3,51 @@
 namespace App\Tests;
 
 use App\Entity\Comment;
+use App\Entity\Post;
 use Codeception\Util\HttpCode;
 
 class CommentCest
 {
+
+    public function createPost(FunctionalTester $I)
+    {
+        $I->amOnLocalizedPage('/login');
+        $I->submitForm('#main form', ['_username' => 'jane_admin', '_password' => 'kitten']);
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeCurrentRouteIs('admin_index');
+        $I->see('Post List');
+        $I->click('Create a new post');
+        $I->seeResponseCodeIs(HttpCode::OK);
+        $I->seeCurrentRouteIs('admin_post_new');
+        $I->see('Post creation');
+        $I->fillField('Title', 'Hi, Symfony!');
+        $I->fillField('Summary', 'Hi, Symfony, Summary!');
+        $I->fillField('Content', 'Hi, Symfony, Content!');
+        $I->click('Create post');
+
+        $I->see('Post created successfully!');
+
+        $I->seeInRepository(Post::class, [
+            'content' => 'Hi, Symfony, Content!',
+            'author' => [
+                'username' => 'jane_admin',
+            ],
+        ]);
+    }
+
     public function createComment(FunctionalTester $I)
     {
         $I->amOnLocalizedPage('/login');
-        $I->submitForm('#main form', ['_username' => 'john_user', '_password' => 'kitten']);
+        $I->submitForm('#main form', ['_username' => 'jane_admin', '_password' => 'kitten']);
         $I->seeResponseCodeIs(HttpCode::OK);
-        $I->seeCurrentRouteIs('blog_index');
-        $I->click('article.post > h2 a');
+        $I->seeCurrentRouteIs('admin_index');
+
+        $I->amOnPage('/en/blog/posts/lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit');
         $I->seeResponseCodeIs(HttpCode::OK);
         $I->seeCurrentRouteIs('blog_post');
-        $I->dontSee('Hi, Symfony!');
+        $I->see('Add a comment');
         $I->fillField('comment[content]', 'Hi, Symfony!');
-        $I->submitForm('#post-add-comment > form', []);
+        $I->click('Publish comment');
         $I->seeCurrentRouteIs('blog_post');
         $I->see('Hi, Symfony!');
         // This particular assertion is a bit of overkill, but it also serves as a testcase
@@ -35,17 +64,16 @@ class CommentCest
         $I->seeInRepository(Comment::class, [
             'content' => 'Hi, Symfony!',
             'author' => [
-                'username' => 'john_user',
+                'username' => 'jane_admin',
             ],
             'post' => [
                 'comments' => [
                     'content' => 'Hi, Symfony!',
                     'author' => [
-                        'username' => 'john_user'
+                        'username' => 'jane_admin'
                     ]
                 ]
             ]
         ]);
     }
-
 }
