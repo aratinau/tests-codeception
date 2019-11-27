@@ -12,7 +12,7 @@
 namespace App\Twig;
 
 use App\Utils\Markdown;
-use Symfony\Component\Intl\Intl;
+use Symfony\Component\Intl\Locales;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
@@ -36,7 +36,10 @@ class AppExtension extends AbstractExtension
     public function __construct(Markdown $parser, string $locales)
     {
         $this->parser = $parser;
-        $this->localeCodes = explode('|', $locales);
+
+        $localeCodes = explode('|', $locales);
+        sort($localeCodes);
+        $this->localeCodes = $localeCodes;
     }
 
     /**
@@ -80,7 +83,7 @@ class AppExtension extends AbstractExtension
 
         $this->locales = [];
         foreach ($this->localeCodes as $localeCode) {
-            $this->locales[] = ['code' => $localeCode, 'name' => Intl::getLocaleBundle()->getLocaleName($localeCode, $localeCode)];
+            $this->locales[] = ['code' => $localeCode, 'name' => Locales::getName($localeCode, $localeCode)];
         }
 
         return $this->locales;
