@@ -180,9 +180,6 @@
     "myclabs/deep-copy": {
         "version": "1.8.1"
     },
-    "ocramius/package-versions": {
-        "version": "1.x-dev"
-    },
     "nikic/php-parser": {
         "version": "v4.2.1"
     },
@@ -417,9 +414,6 @@
     "symfony/polyfill-iconv": {
         "version": "v1.10.0"
     },
-    "symfony/polyfill-iconv": {
-        "version": "v1.10.0"
-    },
     "symfony/polyfill-intl-icu": {
         "version": "1.9-dev"
     },
@@ -590,6 +584,9 @@
     },
     "twig/twig": {
         "version": "2.x-dev"
+    },
+    "vlucas/phpdotenv": {
+        "version": "v2.6.1"
     },
     "zendframework/zend-code": {
         "version": "3.3.1"
