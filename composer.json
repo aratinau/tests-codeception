@@ -35,6 +35,7 @@
         "symfony/twig-bundle": "*",
         "symfony/validator": "*",
         "symfony/web-profiler-bundle": "*",
+        "symfony/web-server-bundle": "^4.0",
         "symfony/webpack-encore-bundle": "^1.4",
         "symfony/yaml": "*",
         "tgalopin/html-sanitizer-bundle": "^1.1",
@@ -55,7 +56,6 @@
         "symfony/css-selector": "*",
         "symfony/phpunit-bridge": "*",
         "symfony/stopwatch": "*",
-        "symfony/web-server-bundle": "^4.0",
         "vlucas/phpdotenv": "^2.4"
     },
     "config": {
