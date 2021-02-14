@@ -48,7 +48,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @var string
-     * @Groups({"user:read"," user:write"})
+     * @Groups({"user:read","user:write"})
      *
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
@@ -57,7 +57,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @var string
-     * @Groups({"user:read"," user:write"})
+     * @Groups({"user:read","user:write"})
      *
      * @ORM\Column(type="string", unique=true)
      * @Assert\NotBlank()
@@ -67,7 +67,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @var string
-     * @Groups({"user:read"," user:write"})
+     * @Groups({"user:read","user:write"})
      *
      * @ORM\Column(type="string", unique=true)
      * @Assert\Email()
