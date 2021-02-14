@@ -1,39 +1,31 @@
-<?php
-
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-namespace App\Tests\users;
+<?php namespace App\Tests;
 
 use App\Entity\User;
-use App\Tests\ApiTester;
 use App\Tests\Step\Api\Anonymous;
 
-class CreateUserCest
+class UserTest extends \Codeception\Test\Unit
 {
-    public function _before(ApiTester $I)
+    /**
+     * @var \App\Tests\ApiTester
+     */
+    protected $tester;
+
+    protected function _before()
     {
     }
 
-    /**
-     * @param ApiTester $I
-     *
-     * @group user
-     * @group user_create
-     */
-    public function tryToCreateUserByAPI(Anonymous $I)
+    protected function _after()
+    {
+    }
+
+    // tests
+    public function testSomeFeature(Anonymous $I)
     {
         $I->am('a anonymous user');
         $I->wantTo('create a user');
         $I->haveHttpHeader('accept', 'application/ld+json');
         $I->haveHttpHeader('content-type', 'application/json');
-        $I->sendPOST('/users', [
+        $I->sendPOST('/api/users', [
             'fullName' => 'fullname',
             'username' => 'username',
             'email' => 'test-create@test.tld',
@@ -45,6 +37,6 @@ class CreateUserCest
             'email' => 'test-create@test.tld',
         ]);
 
-        $I->seeInRepository(User::class, ['email' => 'test-create@test.tld']);
+        // $I->seeInRepository(User::class, ['email' => 'test-create@test.tld']);
     }
 }

@@ -37,6 +37,9 @@
     "codeception/module-asserts": {
         "version": "1.1.1"
     },
+    "codeception/module-datafactory": {
+        "version": "1.0.1"
+    },
     "codeception/module-doctrine2": {
         "version": "1.0.1"
     },
@@ -164,6 +167,9 @@
     "facebook/webdriver": {
         "version": "1.6.0"
     },
+    "fakerphp/faker": {
+        "version": "v1.13.0"
+    },
     "fig/link-util": {
         "version": "1.1.2"
     },
@@ -199,6 +205,12 @@
     },
     "laminas/laminas-zendframework-bridge": {
         "version": "1.1.1"
+    },
+    "league/factory-muffin": {
+        "version": "v3.3.0"
+    },
+    "league/factory-muffin-faker": {
+        "version": "v2.3.0"
     },
     "league/uri-parser": {
         "version": "1.4.1"
