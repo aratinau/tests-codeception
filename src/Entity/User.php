@@ -15,11 +15,16 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\SerializedName;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\Table(name="symfony_demo_user")
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"user:read"}},
+ *     denormalizationContext={"groups"={"user:write"}},
+ * )
  *
  * Defines the properties of the User entity to represent the application users.
  * See https://symfony.com/doc/current/book/doctrine.html#creating-an-entity-class
@@ -43,6 +48,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @var string
+     * @Groups({"user:read"," user:write"})
      *
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
@@ -51,6 +57,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @var string
+     * @Groups({"user:read"," user:write"})
      *
      * @ORM\Column(type="string", unique=true)
      * @Assert\NotBlank()
@@ -60,6 +67,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @var string
+     * @Groups({"user:read"," user:write"})
      *
      * @ORM\Column(type="string", unique=true)
      * @Assert\Email()
@@ -72,6 +80,13 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @SerializedName("password")
+     * @Groups("user:write")
+     * @Assert\NotBlank(groups={"create"})
+     */
+    private $plainPassword;
 
     /**
      * @var array
@@ -124,6 +139,18 @@ class User implements UserInterface, \Serializable
     {
         $this->password = $password;
     }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
+        return $this;
+    }
+
 
     /**
      * Returns the roles or permissions granted to the user for security.
