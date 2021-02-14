@@ -37,4 +37,16 @@ class usersCest
 
         $I->seeInRepository(User::class, ['email' => $user->getEmail()]);
     }
+
+    public function tryToLogIn(ApiTester $I)
+    {
+        $user = $I->helloUser($I);
+
+        $I->seeInRepository(User::class, ['email' => $user->getEmail()]);
+
+        $I->sendPOST('/fr/api/login', [
+            'username' => $user->getUsername(),
+            'password' => '1234',
+        ]);
+    }
 }

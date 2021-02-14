@@ -59,7 +59,7 @@ class User implements UserInterface, \Serializable
      * @var string
      * @Groups({"user:read","user:write"})
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", unique=true)
      * @Assert\NotBlank()
      * @Assert\Length(min=2, max=50)
      */

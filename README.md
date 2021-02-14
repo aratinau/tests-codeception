@@ -10,6 +10,32 @@
 
 `php vendor/bin/codecept generate:helper User`
 
+----
+
+### Create User
+
+`{{base_url}}/api/users`
+
+```json
+{
+  "fullName": "string",
+  "username": "string",
+  "email": "user5@example.com",
+  "password": "string"
+}
+```
+
+### Login
+
+`{{base_url}}/fr/api/login`
+
+```json
+{
+    "username": "string",
+    "password": "string"
+}
+```
+
 Symfony Demo Application for Codeception With API Platform
 ==========================================================
 

@@ -18,7 +18,14 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+        api:
+            anonymous: true
+            json_login:
+                check_path: app_login
+                username_path: username
+                password_path: password
+            logout:
+                path: app_logout
         main:
             # this firewall applies to all URLs
             pattern: ^/
