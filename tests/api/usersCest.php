@@ -1,6 +1,7 @@
 <?php namespace App\Tests;
 use App\Entity\User;
 use App\Tests\ApiTester;
+use App\Tests\Helper\Api;
 
 class usersCest
 {
@@ -28,5 +29,12 @@ class usersCest
         ]);
 
         $I->seeInRepository(User::class, ['email' => 'test-create@test.tld']);
+    }
+
+    public function tryToGetUser(ApiTester $I)
+    {
+        $user = $I->helloUser($I);
+
+        $I->seeInRepository(User::class, ['email' => $user->getEmail()]);
     }
 }

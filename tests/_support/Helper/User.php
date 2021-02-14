@@ -8,9 +8,13 @@ use App\Tests\ApiTester;
 
 class User extends \Codeception\Module
 {
-    /*
     public function createAdminAndGetToken(ApiTester $I)
     {
         return $I->have(\App\Entity\User::class, ['roles' => ['ROLE_ADMIN']]);
-    }*/
+    }
+
+    public function helloUser(ApiTester $I)
+    {
+        return $I->have(\App\Entity\User::class);
+    }
 }
