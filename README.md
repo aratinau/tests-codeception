@@ -1,5 +1,17 @@
-Symfony Demo Application
-========================
+`php vendor/bin/codecept clean`
+
+`php vendor/bin/codecept run`
+
+`php vendor/bin/codecept generate:suite api`
+
+`php vendor/bin/codecept generate:cest api users`
+
+---- 
+
+`php vendor/bin/codecept generate:helper User`
+
+Symfony Demo Application for Codeception With API Platform
+==========================================================
 
 We use official "Symfony Demo Application" to demonstrate basics of Codeception functional tests. Check out `tests` directory to see functional and unit tests included. We use [Symfony](https://codeception.com/docs/modules/Symfony) and [Doctrine2](http://codeception.com/docs/modules/Doctrine2) modules for zero-configuration Symfony testing.
 

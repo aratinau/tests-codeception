@@ -4,9 +4,9 @@ modules:
         - Symfony:
               app_path: 'src'
               environment: 'test'
-        #- REST:
-              #url: /
-              #depends: Symfony
+        - REST:
+              url: /
+              depends: Symfony
         - Doctrine2:
               depends: Symfony
               cleanup: true

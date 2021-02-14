@@ -1,28 +1,18 @@
 <?php namespace App\Tests;
-
 use App\Entity\User;
-use App\Tests\Step\Api\Anonymous;
+use App\Tests\ApiTester;
 
-class UserTest extends \Codeception\Test\Unit
+class usersCest
 {
-    /**
-     * @var \App\Tests\ApiTester
-     */
-    protected $tester;
-
-    protected function _before()
-    {
-    }
-
-    protected function _after()
+    public function _before(ApiTester $I)
     {
     }
 
     // tests
-    public function testSomeFeature(Anonymous $I)
+    public function tryToCreateUserByAPI(ApiTester $I)
     {
         $I->am('a anonymous user');
-        $I->wantTo('create a user');
+        $I->wantTo('create a user by API');
         $I->haveHttpHeader('accept', 'application/ld+json');
         $I->haveHttpHeader('content-type', 'application/json');
         $I->sendPOST('/api/users', [
@@ -37,6 +27,6 @@ class UserTest extends \Codeception\Test\Unit
             'email' => 'test-create@test.tld',
         ]);
 
-        // $I->seeInRepository(User::class, ['email' => 'test-create@test.tld']);
+        $I->seeInRepository(User::class, ['email' => 'test-create@test.tld']);
     }
 }
