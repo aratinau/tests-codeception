@@ -14,10 +14,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\Table(name="symfony_demo_user")
+ * @ApiResource()
  *
  * Defines the properties of the User entity to represent the application users.
  * See https://symfony.com/doc/current/book/doctrine.html#creating-an-entity-class
